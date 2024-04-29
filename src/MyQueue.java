@@ -1,33 +1,33 @@
-public class MyStack<T> {
-    private MyLinkedList<T> stack;
+public class MyQueue<T> {
+    private MyLinkedList<T> queue;
     private int size;
 
-    public MyStack() {
-        stack = new MyLinkedList<>();
+    public MyQueue() {
+        queue = new MyLinkedList<>();
         size = 0;
     }
 
-    public void push(T data) {
-        stack.add(data);
+    public void enqueue(T data) {
+        queue.add(data);
         size++;
     }
 
-    public T pop() {
+    public T dequeue() {
         if (empty()) {
             return null;
         }
-        T lastItem = stack.getLast();
-        stack.removeLast();
+        T topItem = queue.getFirst();
+        queue.removeFirst();
         size--;
-        return lastItem;
-    }
-
-    public T peek() {
-        return stack.getLast();
+        return topItem;
     }
 
     public int getSize() {
         return size;
+    }
+
+    public T peek() {
+        return queue.getFirst();
     }
 
     public boolean empty() {
